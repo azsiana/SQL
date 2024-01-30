@@ -1,5 +1,7 @@
 CREATE database store_project;
 
+USE database store_project;
+
 CREATE table produce (item_id INTEGER PRIMARY KEY, 
 product_name VARCHAR (50), price INTEGER, aisle VARCHAR (50), 
 category VARCHAR (50), weightbylbs INTEGER);
@@ -200,3 +202,26 @@ VALUES
     ('Body Lotion', 14.99, 'Skincare', '2A', 11.99, 'Body'),
     ('Acne Treatment', 19.99, 'Skincare', '2A', 16.99, 'Face'),
     ('Cleanser', 9.99, 'Skincare', '2A', 7.99, 'Face');
+
+-- What brand of cookware sets do we currently have in stock? - basic query
+SELECT item_name 
+FROM cookware
+WHERE product_category = 'cookware sets' AND amount_in_stock > 0;
+
+-- Check how much of each pet item we have in stock every 60 minutes. - event
+CREATE TABLE 
+stock_count (
+product_id INT NOT NULL,
+amount_in_stock INT,
+time TIME)
+
+DELIMITER //
+CREATE EVENT LOG_QTY
+ON SCHEDULE EVERY 60 MINUTE
+DO BEGIN
+insert into stock_count(product_id, amount_in_stock, time)
+select product_id, amount_in_stock, CURRENT_TIMESTAMP() from pets;
+END;
+//
+
+SELECT * FROM stock_count;
