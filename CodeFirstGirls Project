@@ -158,3 +158,45 @@ ADD COLUMN item_size VARCHAR(20);
 -- Modify the Skincare table
 ALTER TABLE Skincare
 ADD COLUMN product_category VARCHAR(50);
+
+--Insert Fitness Table Values
+INSERT INTO Fitness (item_name, item_price, item_category, aisle_number, sale_price, item_color, item_weight)
+VALUES
+    ('Jump Rope', 15.99, 'Fitness', '2A', 12.99, 'Red', 0.5),
+    ('Yoga Mat', 25.99, 'Fitness', '2A', 19.99, 'Blue', 1.2),
+    ('Water Bottle', 8.99, 'Fitness', '2A', 6.99, 'Green', 0.3),
+    ('Yoga Blocks', 12.49, 'Fitness', '2A', 9.99, 'Purple', 1.5),
+    ('Dumbbells', 29.99, 'Fitness', '2A', 24.99, 'Silver', 3.0),
+    ('Kettle Bells', 39.99, 'Fitness', '2A', 34.99, 'Black', 5.0),
+    ('Gym Bag', 45.99, 'Fitness', '2A', 39.99, 'Gray', 1.8),
+    ('Running Shoes', 59.99, 'Fitness', '2A', 49.99, 'White', 2.2),
+    ('Protein Powder', 22.99, 'Fitness', '2A', 18.99, 'Chocolate', 2.5),
+    ('Treadmill', 599.99, 'Fitness', '2A', 499.99, 'Black', 75.0);
+
+--Insert Apparel Table Values
+INSERT INTO Apparel (item_name, item_price, item_category, aisle_number, sale_price, item_color, item_size)
+VALUES
+    ('Sweatpants', 29.99, 'Apparel', '2A', 24.99, 'Gray', 'Medium'),
+    ('Sweatshirt', 34.99, 'Apparel', '2A', 29.99, 'Black', 'Large'),
+    ('Jeans', 39.99, 'Apparel', '2A', 34.99, 'Blue', '32x32'),
+    ('Tank Top', 14.99, 'Apparel', '2A', 11.99, 'White', 'Small'),
+    ('Crewneck', 32.99, 'Apparel', '2A', 27.99, 'Navy', 'Medium'),
+    ('Sports Bra', 19.99, 'Apparel', '2A', 16.99, 'Pink', 'Small'),
+    ('Running Shorts', 22.99, 'Apparel', '2A', 18.99, 'Black', 'Medium'),
+    ('Training Pants', 27.99, 'Apparel', '2A', 23.99, 'Green', 'Large'),
+    ('Sneakers', 54.99, 'Apparel', '2A', 49.99, 'White', '9'),
+    ('Socks (3 pair)', 9.99, 'Apparel', '2A', 7.99, 'Assorted', 'One Size');
+
+--Insert Skincare Table Values
+INSERT INTO Skincare (item_name, item_price, item_category, aisle_number, sale_price, product_category)
+VALUES
+    ('Toners', 18.99, 'Skincare', '2A', 15.99, 'Face'),
+    ('Sunscreen', 12.99, 'Skincare', '2A', 9.99, 'Body'),
+    ('Moisturizer', 24.99, 'Skincare', '2A', 19.99, 'Face'),
+    ('Serums', 29.99, 'Skincare', '2A', 24.99, 'Face'),
+    ('Ampoules', 35.99, 'Skincare', '2A', 29.99, 'Face'),
+    ('Spot Treatments', 15.99, 'Skincare', '2A', 12.99, 'Face'),
+    ('Face Masks', 8.99, 'Skincare', '2A', 6.99, 'Face'),
+    ('Body Lotion', 14.99, 'Skincare', '2A', 11.99, 'Body'),
+    ('Acne Treatment', 19.99, 'Skincare', '2A', 16.99, 'Face'),
+    ('Cleanser', 9.99, 'Skincare', '2A', 7.99, 'Face');
