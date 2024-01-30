@@ -1,6 +1,6 @@
 CREATE database store_project;
 
-USE database store_project;
+USE store_project;
 
 CREATE table produce (item_id INTEGER PRIMARY KEY, 
 product_name VARCHAR (50), price INTEGER, aisle VARCHAR (50), 
