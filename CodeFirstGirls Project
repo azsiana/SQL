@@ -115,3 +115,46 @@ VALUES
 (8465, 'Cuisinart', 96.99, 75.99, 7, 25, 'stock pots'),
 (3954, 'T-fal Simply', 22.99, 12.99, 2, 25, 'saute pans'),
 (2305, 'Rachael Ray', 129.99, 99.99, 0, 25, 'cookware sets');
+
+-- Fitness table
+CREATE TABLE Fitness (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(255),
+    item_price DECIMAL(10, 2),
+    item_category VARCHAR(50),
+    aisle_number VARCHAR(5),
+    sale_price DECIMAL(10, 2)
+);
+
+-- Skincare 
+CREATE TABLE Skincare (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(255),
+    item_price DECIMAL(10, 2),
+    item_category VARCHAR(50),
+    aisle_number VARCHAR(5),
+    sale_price DECIMAL(10, 2)
+);
+
+-- Apparel 
+CREATE TABLE Apparel (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(255),
+    item_price DECIMAL(10, 2),
+    item_category VARCHAR(50),
+    aisle_number VARCHAR(5),
+    sale_price DECIMAL(10, 2)
+);
+
+ALTER TABLE Fitness
+ADD COLUMN item_color VARCHAR(50),
+ADD COLUMN item_weight DECIMAL(8, 2);
+
+-- Modify the Apparel table
+ALTER TABLE Apparel
+ADD COLUMN item_color VARCHAR(50),
+ADD COLUMN item_size VARCHAR(20);
+
+-- Modify the Skincare table
+ALTER TABLE Skincare
+ADD COLUMN product_category VARCHAR(50);
