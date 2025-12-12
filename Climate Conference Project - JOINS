@@ -1,0 +1,86 @@
+Climate Conference Project
+Database: https://www.db-fiddle.com/f/pxMci1sLL945KHKYvpe9W6/1
+
+SELECT * 
+FROM vips
+LIMIT 5;
+
+SELECT * 
+FROM reservations 
+LIMIT 5;
+
+SELECT * 
+FROM events 
+LIMIT 5;
+
+SELECT *
+FROM hotels
+LIMIT 5;
+
+--1.LEFT JOIN - List all of names of VIPs who have not RSVP'd to the welcome party or the thank you dinner 
+SELECT vips.first_name, vips.last_name
+FROM reservations
+LEFT JOIN vips
+ON reservations.member_id = vips.member_id
+WHERE reservations.welcome_rsvp = 0 
+OR reservations.dinner_rsvp = 0;
+
+--2. INNER JOIN - Who is the keynote speaker?
+SELECT vips.first_name, vips.last_name, events.event_type
+FROM vips
+JOIN events 
+ON vips.event = events.event_id
+WHERE events.event_type = "Keynote";
+
+--3. MULTIPLE JOINS - List the vips and the name of hotel that they are staying at 
+SELECT vips.first_name, vips.last_name, hotels.hotel_name
+FROM hotels
+JOIN reservations
+ON hotels.hotel_id = reservations.hotel
+	JOIN vips
+    ON reservations.member_id = vips.member_id
+ORDER BY hotels.hotel_name;
+
+--Find the names of all vips who will be staying at the Four Seasons Hotel 
+SELECT vips.first_name, vips.last_name, hotels.hotel_name
+FROM hotels
+JOIN reservations
+ON hotels.hotel_id = reservations.hotel
+	JOIN vips
+    ON reservations.member_id = vips.member_id
+WHERE hotels.hotel_name LIKE '%Four%';
+    
+--4.SUBQUERY 
+SELECT first_name
+FROM vips
+WHERE member_id IN (SELECT association
+       FROM vips
+      WHERE assoc_type = "education");
+
+--5. SELF JOIN - CREATE A TABLE SHOWING WHO THE NAMES OF SPEAKERS AND WHO PROVIDES FEEDBACK TO THEM
+SELECT speakers.first_name AS speaker_name, speakers.last_name AS speaker_lastname, feedback.first_name AS feedback_from
+FROM vips AS speakers
+JOIN vips AS feedback
+ON speakers.provides_feedback_to = feedback.member_id;
+
+--6. Find the panelist who have been members for over 30 years
+SELECT first_name, member_since, event_type
+FROM vips
+LEFT JOIN events 
+ON vips.event = events.event_id
+WHERE member_since < 1995
+AND events.event_type LIKE '%Panel%%';
+
+--7. Find VIPs staying at the hotel with the most reservations
+SELECT vips.first_name, vips.last_name
+FROM vips
+LEFT JOIN reservations 
+ON vips.member_id = reservations.member_id
+LEFT JOIN hotels
+ON reservations.hotel = hotels.hotel_name
+WHERE reservations.hotel =
+(SELECT hotel
+FROM reservations
+GROUP BY hotel
+ORDER BY COUNT(*) desc
+LIMIT 1);
