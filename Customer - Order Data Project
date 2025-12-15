@@ -73,3 +73,8 @@ ON FEB.orderid=cust.order_id
 WHERE Feb.Quantity>2
 AND length(orderid) = 6
 AND orderid <> 'Order ID';
+
+--Let’s say we need to find all orderIDs in the MarSales table from the BIT_DB database where the orderID has the characters ‘16’ in the beginning, followed by one unknown character, then a ‘0’, and any number of characters for the rest.
+SELECT orderID 
+FROM BIT_DB.MarSales 
+WHERE orderID LIKE '16_0%';
