@@ -44,7 +44,7 @@ AND energy >=0.6
 ORDER BY danceability desc
 LIMIT 20;
 
-/* WHich artists produced the most energetic songs?*/
+/* Which artists produced the most energetic songs?*/
 SELECT artist_name
 FROM BIT_DB.Spotifydata
 ORDER BY energy desc 
